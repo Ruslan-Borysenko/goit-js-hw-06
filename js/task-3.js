@@ -1,10 +1,13 @@
 import users from './users.js';
 
-const getUsersWithGender = (users, gender) => {
-  const result = users
-    .filter(user => user.gender === gender)
-    .map(user2 => user2.name);
-  return result;
+const getUsersWithGender = (users, someGender) => {
+  // return users
+  //   .filter(({gender}) => gender === someGender)
+  //   .map(({name}) => name);
+  return users.reduce((acc, { gender, name }) => {
+    gender === someGender && acc.push(name);
+    return acc;
+  }, []);
 };
 
 console.log(getUsersWithGender(users, 'male'));

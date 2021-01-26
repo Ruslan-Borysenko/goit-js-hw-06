@@ -1,17 +1,12 @@
 import users from './users.js';
 
-const getSortedUniqueSkills = users =>
-  // 1. get arr of skills
-  users.reduce((totalSkills, user) => {
-    totalSkills.push(...user.skills);
-
-    // 2. remove duplicate skills
-    let uniq = [...new Set(totalSkills)];
-
-    // 3. sorf A-Z
-    const result = uniq.sort();
-    return result;
+const getSortedUniqueSkills = users => {
+  const allSkills = users.reduce((totalSkills, { skills }) => {
+    totalSkills.push(...skills);
+    return totalSkills;
   }, []);
+  return [...new Set(allSkills)].sort();
+};
 
 console.log(getSortedUniqueSkills(users));
 

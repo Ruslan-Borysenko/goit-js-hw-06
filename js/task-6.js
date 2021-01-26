@@ -1,8 +1,7 @@
 import users from './users.js';
 
 const getUsersWithAge = (users, min, max) => {
-  const result = users.filter(user => user.age >= min && user.age <= max);
-  return result;
+  return users.filter(({ age }) => age >= min && age <= max);
 };
 
 console.log(getUsersWithAge(users, 20, 30)); // [объект Ross Vazquez, объект Elma Head, объект Carey Barr]
